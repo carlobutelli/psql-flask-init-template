@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres:10.6
+    environment:
+      - DEBUG=false
+      - DB_EXTENSION=plpgsql,pg_trgm
+      - POSTGRES_USER=loki
+      - POSTGRES_PASSWORD=d0nt4get
+      - POSTGRES_DB=loki
+    ports:
+      - "5499:5432"
+  loki:
+    privileged: true
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    networks:
+      - default
+    environment:
+      - DATABASE_URL=postgresql://loki:d0nt4get@postgres:5432/loki
+      - ENV=Production
+      - FLASK_APP=loki
+      - FLASK_DEBUG=1
+    links:
+      - postgres:postgres
+    ports:
+      - "8080:8080"
