@@ -12,6 +12,8 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements/prod.txt
 RUN pip install gunicorn
 
+EXPOSE 8080
+
 COPY . /code
 
 # run server

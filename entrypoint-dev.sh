@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! "$UWSGI_MODULE" ]; then
-    UWSGI_MODULE="upload.wsgi:app"
+    UWSGI_MODULE="loki.wsgi:app"
 fi
 
 if [ ! "$UWSGI_MASTER" ]; then
@@ -9,7 +9,7 @@ if [ ! "$UWSGI_MASTER" ]; then
 fi
 
 if [ ! "$UWSGI_HTTP" ]; then
-    UWSGI_HTTP=0.0.0.0:5001
+    UWSGI_HTTP=0.0.0.0:8080
 fi
 
 if [ ! "$UWSGI_PROCESSES" ]; then

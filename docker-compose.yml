@@ -1,6 +1,7 @@
 version: '3.1'
 services:
   postgres:
+    container_name: loki_db
     image: postgres:10.6
     environment:
       - DEBUG=false
@@ -11,6 +12,7 @@ services:
     ports:
       - "5499:5432"
   loki:
+    container_name: loki_app
     privileged: true
     build:
       context: ./
@@ -22,6 +24,7 @@ services:
       - ENV=Production
       - FLASK_APP=loki
       - FLASK_DEBUG=1
+      - FLASK_ENV=Production
     links:
       - postgres:postgres
     ports:
