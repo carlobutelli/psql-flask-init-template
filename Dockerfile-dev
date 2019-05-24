@@ -1,0 +1,20 @@
+FROM python:3.7
+MAINTAINER Carlo Butelli <c.butelli@nxchange.com>
+
+# set working directory
+ADD . /code
+WORKDIR /code
+
+# add app
+COPY requirements /code/requirements
+
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements/prod.txt
+RUN pip install gunicorn
+
+COPY . /code
+
+# run server
+RUN chmod 755 /code/entrypoint-dev.sh
+ENTRYPOINT ["/code/entrypoint-dev.sh"]
+CMD ["uwsgi", "--uid", "www-data", "--gid", "www-data", "--need-app", "--logformat", "[%(ltime)] [UWSGI] \"%(method) %(uri) %(proto)\" %(status) %(size) \"%(referer)\" \"%(uagent)\""]
