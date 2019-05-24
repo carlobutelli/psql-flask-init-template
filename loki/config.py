@@ -17,7 +17,7 @@ class BaseConfig:
 
 class LocalConfig(BaseConfig):
     """Development configuration"""
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     DEVELOPMENT = True
     DEBUG = True
 
@@ -30,7 +30,7 @@ class TestingConfig(BaseConfig):
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration"""
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://hades:d0nt4get@localhost:5432/idv')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://loki:d0nt4get@localhost:5432/idv')
     DEVELOPMENT = True
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -40,4 +40,4 @@ class ProductionConfig(BaseConfig):
     """Production configuration"""
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get("SECRET_KEY")
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
