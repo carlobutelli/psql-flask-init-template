@@ -14,7 +14,7 @@ To run the project locally make sure you have all the project requirements insta
 ```
 $ virtualenv -p python3 venv
 $ . venv/bin/activate
-$ pip install -r requirements/base.txt
+$ pip3 install -r requirements/base.txt
 $ export FLASK_APP=loki
 $ export FLASK_DEBUG=1
 $ cd loki
@@ -28,7 +28,7 @@ To run the tests activate the virtual environment and run the following commands
 ```
 $ virtualenv -p python3 venv
 $ . venv/bin/activate
-$ pip install -r requirements/base.txt
+$ pip3 install -r requirements/base.txt
 $ export FLASK_APP=loki
 $ export FLASK_DEBUG=1
 $ pytest

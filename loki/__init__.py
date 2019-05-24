@@ -5,6 +5,8 @@ import uuid
 
 from flask import Flask, request, g
 from flask_cors import CORS
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 
 from loki.config import DevelopmentConfig, LocalConfig, TestingConfig, ProductionConfig
 from loki.exceptions import WrongConfiguration
@@ -47,16 +49,16 @@ def create_app():
     # set config
     app.config.from_object(ENV)
 
-    # db = get_db()
-
     with app.app_context():
+        db = get_db()
+        db.init_app(app)
         if app.config["ENV"] == "Development":
             cors.init_app(app)
 
     # register app blueprints
     app.logger.info("[WARMUP]: Registering Blueprints")
-    from .views import loki as loki_bp
-    app.register_blueprint(loki_bp)
+    from .admin import admin as admin_bp
+    app.register_blueprint(admin_bp)
     app.logger.info("[WARMUP]: successfully registered Blueprints")
 
     # shell context for flask cli

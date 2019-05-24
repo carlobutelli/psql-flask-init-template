@@ -8,9 +8,9 @@ WORKDIR /code
 # add app
 COPY requirements /code/requirements
 
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements/prod.txt
-RUN pip install gunicorn
+RUN pip3 install --upgrade pip
+RUN pip3 install --no-cache-dir -r requirements/prod.txt
+RUN pip3 install gunicorn
 
 EXPOSE 8080
 
