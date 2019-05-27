@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=d0nt4get
       - POSTGRES_DB=loki
     ports:
-      - "5499:5432"
+      - "5432:5432"
   loki:
     container_name: loki_app
     privileged: true
