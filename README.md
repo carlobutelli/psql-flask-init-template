@@ -17,7 +17,6 @@ $ . venv/bin/activate
 $ pip3 install -r requirements/base.txt
 $ export FLASK_APP=loki
 $ export FLASK_DEBUG=1
-$ cd loki
 $ flask run
 ```
 
