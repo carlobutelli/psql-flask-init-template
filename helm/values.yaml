@@ -1,12 +1,12 @@
 name: "loki"
-fullname: "loki-identity-verification-service"
+fullname: "loki-id-verification"
 
 replicaCount: 3
 imagePullSecret: regcred
 namespace: default
 
 image:
-  repository: docker-builds.yellitech.io/loki-identity-verification-service
+  repository: docker-builds.yellitech.io/loki-identity-verification
   tag: latest
   pullPolicy: Always
 
