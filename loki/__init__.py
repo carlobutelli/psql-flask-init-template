@@ -5,8 +5,7 @@ import uuid
 
 from flask import Flask, request, g
 from flask_cors import CORS
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
+from flask_swagger_ui import get_swaggerui_blueprint
 
 from loki.config import DevelopmentConfig, LocalConfig, TestingConfig, ProductionConfig
 from loki.exceptions import WrongConfiguration
@@ -49,6 +48,14 @@ def create_app():
     # set config
     app.config.from_object(ENV)
 
+    swagger_bp = get_swaggerui_blueprint(
+        '/swagger',
+        '/static/swagger.json',
+        config={
+            'app_name': "Loki Identity Verification Service"
+        }
+    )
+
     with app.app_context():
         db = get_db()
         db.init_app(app)
@@ -59,6 +66,7 @@ def create_app():
     app.logger.info("[WARMUP]: Registering Blueprints")
     from .admin import admin as admin_bp
     app.register_blueprint(admin_bp)
+    app.register_blueprint(swagger_bp, url_prefix='/swagger')
     app.logger.info("[WARMUP]: successfully registered Blueprints")
 
     # shell context for flask cli

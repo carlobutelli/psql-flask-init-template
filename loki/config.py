@@ -7,12 +7,6 @@ class BaseConfig:
     TESTING = False
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SWAGGER = dict(
-        title='Loki Identity Verification Service',
-        uiversion=1,
-        description="API for identity verification with MiTek",
-        specs_route="/swagger"
-    )
 
 
 class LocalConfig(BaseConfig):
@@ -25,12 +19,12 @@ class LocalConfig(BaseConfig):
 class TestingConfig(BaseConfig):
     """Test environment configuration"""
     TESTING = True
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///test.db')
 
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration"""
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://loki:d0nt4get@localhost:5432/idv')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://loki:d0nt4get@localhost:5432/loki')
     DEVELOPMENT = True
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
