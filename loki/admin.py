@@ -1,3 +1,5 @@
+import os
+
 from flask import Blueprint, jsonify, g
 
 from flask import current_app as app
@@ -8,8 +10,9 @@ admin = Blueprint("admin", __name__, url_prefix="/admin")
 
 
 @admin.route("/ping")
-def ping_route():
+def ping():
     """
+    Ping
     Example endpoint for testing readiness from the application. Returns a simple pong
     ---
     responses:
@@ -22,13 +25,11 @@ def ping_route():
 
 
 @admin.route("/healthcheck")
-def health_check_db():
+def healthcheck():
     """
-    Healthcheck endpoint checking if db service is available
-    Main purpose is to respond to k8s liveness/readyness probes
+    Healthcheck
+    Endpoint to check if services are available. Main purpose is to respond to k8s liveness/readyness probes
     ---
-    tags:
-        - healthcheck
     responses:
         200:
             description: Everything is working well
@@ -46,3 +47,4 @@ def health_check_db():
     except Exception as e:
         app.logger.error("{}: unhealthy healthcheck: {}".format(transaction_id, e))
         return jsonify(status="unhealthy", message="Error connecting to database: {}".format(e)), 500
+

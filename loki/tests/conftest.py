@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from .. import create_app
@@ -7,8 +9,8 @@ from .. import create_app
 def client():
     """Create and configure a new app instance for each test."""
     # create the app with common test config
+    os.environ['FLASK_ENV'] = "Testing"
     app = create_app()
-    app.config['TESTING'] = True
 
     ctx = app.app_context()
     ctx.push()
