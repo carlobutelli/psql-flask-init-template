@@ -56,15 +56,6 @@ def create_app():
     app.register_blueprint(admin_bp)
     app.logger.info("[WARMUP]: successfully registered Blueprints")
 
-    app.config["SWAGGER"] = {
-        "swagger_version": "2.0",
-        "title": "Loki IVS",
-        "headers": [
-            ("Access-Control-Allow-Origin", '*'),
-            ("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"),
-            ("Access-Control-Allow-Credentials", "true"),
-        ]
-    }
     Swagger(app,
             template={
                 "swagger": "2.0",

@@ -1,9 +1,11 @@
 variables:
-  FLASK_APP: loki.py
+  FLASK_APP: loki
   FLASK_DEBUG: 1
+  FLASK_ENV: Local
   POSTGRES_PASSWORD: d0nt4get
   POSTGRES_USER: loki
   POSTGRES_DB: loki
+  POSTGRES_TEST_DB: loki_test
 
 stages:
   - test
@@ -12,12 +14,13 @@ stages:
 
 integration-test:
   stage: test
-  image: python:3.7
+  image: python:3.7-alpine
   variables:
+    FLASK_ENV: Testing
     ENV: Testing
-    DATABASE_URL: postgresql://loki:d0nt4get@127.0.0.1:5432/loki
+    DATABASE_TEST_URL: postgresql://loki:d0nt4get@127.0.0.1:5432/loki_test
   script:
-    - pip install -r requirements/base.txt
+    - pip install -r requirements/test.txt
     - python -m unittest discover -s ./loki/tests -p '*_tests.py'
   services:
     - name: postgres:10.6

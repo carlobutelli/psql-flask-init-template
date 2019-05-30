@@ -11,6 +11,15 @@ class BaseConfig:
     BUILD_ID = "##BUILD_ID##"
     BUILD_TAG = "##BUILD_TAG##"
     GIT_COMMIT = "##GIT_COMMIT##"
+    SWAGGER = {
+        "swagger_version": "2.0",
+        "title": "Loki IDVS",
+        "headers": [
+            ("Access-Control-Allow-Origin", '*'),
+            ("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"),
+            ("Access-Control-Allow-Credentials", "true"),
+        ]
+    }
 
 
 class LocalConfig(BaseConfig):
