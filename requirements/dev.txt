@@ -1,0 +1,4 @@
+-r base.txt
+pytest==4.3.0
+ipdb==0.12
+coverage==4.5.3

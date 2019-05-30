@@ -1,0 +1,23 @@
+name: "loki"
+fullname: "loki-id-verification"
+
+replicaCount: 3
+imagePullSecret: regcred
+namespace: default
+
+image:
+  repository: docker-builds.yellitech.io/loki-identity-verification
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer
+  port: 8080
+
+resources: {}
+
+configs: 
+  FLASK_APP: loki.py
+
+secrets:
+  FLASK_SECRET_KEY: this-really-needs-to-be-changed
