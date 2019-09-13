@@ -43,7 +43,7 @@ def create_app():
     app.logger.setLevel(log_level)
 
     app.logger.info("[WARMUP]: Registering Blueprints")
-    from .admin import admin as admin_bp
+    from mars.views.admin import admin as admin_bp
     app.register_blueprint(admin_bp)
 
     app.logger.info("[WARMUP]: successfully registered Blueprints")
