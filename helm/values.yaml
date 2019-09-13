@@ -1,12 +1,12 @@
 name: "mars"
-fullname: "mars-id-verification"
+fullname: "flask-init-template"
 
 replicaCount: 3
 imagePullSecret: regcred
 namespace: default
 
 image:
-  repository: docker-builds.yellitech.io/mars-identity-verification
+  repository: docker-builds.yellitech.io/flask-init-template
   tag: latest
   pullPolicy: Always
 
