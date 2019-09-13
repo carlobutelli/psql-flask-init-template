@@ -6,12 +6,9 @@ import uuid
 from flasgger import Swagger
 from flask import Flask, request, g
 from flask_cors import CORS
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
 
-from loki.config import DevelopmentConfig, LocalConfig, TestingConfig, ProductionConfig
-from loki.exceptions import WrongConfiguration
-from loki.core.db_manager import get_db
+from mars.config import DevelopmentConfig, LocalConfig, TestingConfig, ProductionConfig
+from mars.exceptions import WrongConfiguration
 
 
 def create_app():
@@ -19,15 +16,10 @@ def create_app():
 
     cors = CORS(app)
 
-    app_settings = f"loki.config.{os.getenv('FLASK_ENV')}Config"
+    app_settings = f"mars.config.{os.getenv('FLASK_ENV').capitalize()}Config"
     app.config.from_object(app_settings)
 
-    db = SQLAlchemy(app)
-    migrate = Migrate(app, db)
-
     with app.app_context():
-        db = get_db()
-        db.init_app(app)
         if app.config["ENV"] == "Development":
             cors.init_app(app)
 
@@ -52,22 +44,20 @@ def create_app():
 
     app.logger.info("[WARMUP]: Registering Blueprints")
     from .admin import admin as admin_bp
-
     app.register_blueprint(admin_bp)
+
     app.logger.info("[WARMUP]: successfully registered Blueprints")
 
     Swagger(app,
             template={
                 "swagger": "2.0",
                 "info": {
-                    "title": "Loki Identity Verification Service",
+                    "title": "Contract Signing",
                     "version": "1.0.0",
                     "contact": {
                         "email": "c.butelli@nxchange.com"
                     },
-                    "description": "API to verify user identity and documents. It includes face recognition and "
-                                   "matching verfication with the provided document.\nAll the documents are validated "
-                                   "by a certified third-party provider (Mitek)"
+                    "description": "API to digitally sign a pdf file"
                 },
                 "consumes": [
                     "application/json",
@@ -94,10 +84,25 @@ def create_app():
                         "type": "object"
                     }
                 }
+            },
+            config={
+                "headers": [
+                ],
+                "specs": [
+                    {
+                        "endpoint": 'apispec_1',
+                        "route": '/apispec_1.json',
+                        "rule_filter": lambda rule: True,  # all in
+                        "model_filter": lambda tag: True,  # all in
+                    }
+                ],
+                "static_url_path": "/flasgger_static",
+                "swagger_ui": True,
+                "specs_route": "/swagger/"
             }
             )
 
-    app.logger.info("[WARMUP]: Loki app successfully instantiated")
+    app.logger.info("[WARMUP]: Mars app successfully instantiated")
 
     @app.before_request
     def set_transaction_id():

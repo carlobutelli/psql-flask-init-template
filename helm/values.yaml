@@ -1,12 +1,12 @@
-name: "loki"
-fullname: "loki-id-verification"
+name: "mars"
+fullname: "mars-id-verification"
 
 replicaCount: 3
 imagePullSecret: regcred
 namespace: default
 
 image:
-  repository: docker-builds.yellitech.io/loki-identity-verification
+  repository: docker-builds.yellitech.io/mars-identity-verification
   tag: latest
   pullPolicy: Always
 
@@ -17,7 +17,7 @@ service:
 resources: {}
 
 configs: 
-  FLASK_APP: loki.py
+  FLASK_APP: mars.py
 
 secrets:
   FLASK_SECRET_KEY: this-really-needs-to-be-changed

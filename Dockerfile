@@ -6,8 +6,6 @@ RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
 
-COPY create-test-db.sh /docker-entrypoint-initdb.d/
-
 COPY requirements /code/requirements
 RUN apk add --no-cache --virtual .build-deps \
   build-base postgresql-dev libffi-dev python3-dev \
@@ -31,4 +29,4 @@ COPY . /code
 
 RUN chmod 755 docker_entrypoint.sh
 ENTRYPOINT ["sh", "docker_entrypoint.sh"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "loki.wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "mars.wsgi:app"]
