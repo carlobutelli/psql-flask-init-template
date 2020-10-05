@@ -18,15 +18,6 @@ class ExtensionError(BaseError):
         return f'The extension {self.extension} is not supported'
 
 
-class S3Error(BaseError):
-
-    def __init__(self, error):
-        self.s3_message = str(error)
-
-    def __repr__(self):
-        return f"S3 launch the next error {self.s3_message}"
-
-
 class PhotoTypeError(BaseError):
     def __init__(self, photo_type):
         self.photo_type = photo_type

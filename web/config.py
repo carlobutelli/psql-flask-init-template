@@ -22,11 +22,13 @@ class LocalConfig(BaseConfig):
     """Development configuration"""
     DEVELOPMENT = True
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://webapp:d0nt4get@localhost:5432/app')
 
 
 class TestingConfig(BaseConfig):
     """Test environment configuration"""
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_TEST_URL', 'sqlite:///test.db')
 
 
 class DevelopmentConfig(BaseConfig):
@@ -34,9 +36,11 @@ class DevelopmentConfig(BaseConfig):
     DEVELOPMENT = True
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://webapp:d0nt4get@localhost:5432/app')
 
 
 class ProductionConfig(BaseConfig):
     """Production configuration"""
     SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')

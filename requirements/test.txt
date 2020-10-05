@@ -1,2 +1,2 @@
 -r base.txt
-pytest==4.3.0
+pytest==46.1.0
