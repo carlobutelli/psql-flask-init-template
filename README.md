@@ -29,3 +29,7 @@ export APP_SETTINGS=Local
 export DATABASE_URL=postgresql://webapp:d0nt4get@postgres:5432/app
 export DATABASE_TEST_URL=postgresql://webapp:d0nt4get@postgres:5432/app_test
 ```
+
+### Documentation
+-----------------
+The documentation of this app is available @[flask-init-template.herokuapp.com](https://flask-init-template.herokuapp.com/swagger)
