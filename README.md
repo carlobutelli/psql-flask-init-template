@@ -1,16 +1,27 @@
 # Flask init template
+---------------------
 This is a simple init template base for starting services with Flask.
 
+---
 
-To run the project locally
+### Run the App
+---------------
+First start the database service
+```bash
+docker-compose up -d
 ```
-virtualenv -p python3 venv
-. venv/bin/activate
+
+Then run the project locally
+```
+virtualenv -p python3 venv && . venv/bin/activate
 pip3 install -r requirements/dev.txt
-flask run
+flask run -p 8080
 ```
 
-### Environment vars
+---
+
+### Env variables
+--------------------
 ```bash
 export FLASK_APP=web
 export FLASK_DEBUG=1
