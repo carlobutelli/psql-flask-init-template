@@ -29,4 +29,4 @@ SQLAlchemy==1.3.19
 uwsgi==2.0.19.1
 webargs==6.1.1
 Werkzeug==1.0.1
-zipp==3.2.0
+zipp==3.3.0
