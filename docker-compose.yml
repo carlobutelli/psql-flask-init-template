@@ -22,7 +22,7 @@ services:
     privileged: true
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dev
     environment:
 #      - SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template
       - DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template

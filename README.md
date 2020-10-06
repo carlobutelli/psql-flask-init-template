@@ -32,7 +32,17 @@ export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-temp
 export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template-test
 ```
 
+---
+
 ### Documentation
 -----------------
 The Swagger documentation is available @[flask-init-template.herokuapp.com](https://flask-init-template.herokuapp.com/swagger)
 or alternatively, at the development stage, @```localhost:<port>/swagger```
+
+---
+
+### Optimizations
+-----------------
+A more optimized setup with [uWSGI-NGINX](https://flask.palletsprojects.com/en/1.1.x/deploying/uwsgi/).
+
+Standalone [WSGI Containers](https://flask.palletsprojects.com/en/1.1.x/deploying/wsgi-standalone/).
