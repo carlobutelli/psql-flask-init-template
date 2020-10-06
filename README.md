@@ -35,3 +35,4 @@ export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init
 ### Documentation
 -----------------
 The Swagger documentation is available @[flask-init-template.herokuapp.com](https://flask-init-template.herokuapp.com/swagger)
+or alternatively, at the development stage, @```localhost:<port>/swagger```

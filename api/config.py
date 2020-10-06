@@ -9,7 +9,7 @@ class BaseConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SWAGGER = {
         "swagger_version": "2.0",
-        "title": "Mars Contract Signing",
+        "title": "FIT - Flask Init Template",
         "headers": [
             ("Access-Control-Allow-Origin", '*'),
             ("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"),
