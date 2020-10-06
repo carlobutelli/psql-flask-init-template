@@ -16,9 +16,9 @@ def create_app():
     app = Flask(__name__)
 
     if not os.getenv('APP_SETTINGS'):
-        app_settings = f"web.config.DevelopmentConfig"
+        app_settings = f"api.config.DevelopmentConfig"
     else:
-        app_settings = f"web.config.{os.getenv('APP_SETTINGS')}Config"
+        app_settings = f"api.config.{os.getenv('APP_SETTINGS')}Config"
     app.config.from_object(app_settings)
 
     Core(app)

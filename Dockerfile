@@ -29,5 +29,5 @@ RUN apk add --no-cache file-dev
 COPY . /code
 
 RUN chmod 755 docker_entrypoint.sh
-ENTRYPOINT ["sh", "docker_entrypoint.sh"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "web.wsgi:app"]
+#ENTRYPOINT ["sh", "docker_entrypoint.sh"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "api.wsgi:app"]

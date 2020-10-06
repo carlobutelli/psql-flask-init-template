@@ -1,35 +1,37 @@
 # Flask init template
 ---------------------
-This is a simple init template base for starting services with Flask.
+This is a simple init template base to start building services with Python Flask.
 
 ---
 
-### Run the App
+### Run the API
 ---------------
-First start the database service
+Start both the services (DB & API) with Docker
 ```bash
 docker-compose up -d
 ```
+and API will be available at ```localhost:8080```
 
-Then run the project locally
+To run the API locally
 ```
 virtualenv -p python3 venv && . venv/bin/activate
 pip3 install -r requirements/dev.txt
 flask run -p 8080
 ```
+then the API will be available at ```localhost:5000```
 
 ---
 
 ### Env variables
 --------------------
 ```bash
-export FLASK_APP=web
+export FLASK_APP=api
 export FLASK_DEBUG=1
 export APP_SETTINGS=Local
-export DATABASE_URL=postgresql://webapp:d0nt4get@postgres:5432/app
-export DATABASE_TEST_URL=postgresql://webapp:d0nt4get@postgres:5432/app_test
+export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template
+export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template-test
 ```
 
 ### Documentation
 -----------------
-The documentation of this app is available @[flask-init-template.herokuapp.com](https://flask-init-template.herokuapp.com/swagger)
+The Swagger documentation is available @[flask-init-template.herokuapp.com](https://flask-init-template.herokuapp.com/swagger)

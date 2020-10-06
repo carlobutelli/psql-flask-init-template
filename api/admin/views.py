@@ -7,7 +7,7 @@ admin = Blueprint("admin", __name__, url_prefix="/admin")
 
 
 @admin.route("/ping")
-@swag_from("/web/docs/admin.yml")
+@swag_from("/api/docs/admin.yml")
 def ping():
     transaction_id = g.transaction_id
     app.logger.info("[PING] {}: got new request to ping app".format(transaction_id))
