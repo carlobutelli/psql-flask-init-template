@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Web App",
+    "title": "Flask Init Template",
     "version": "0.0.1",
     "contact": {
       "name": "API Support",
