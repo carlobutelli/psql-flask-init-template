@@ -28,6 +28,7 @@ then the API will be available at ```localhost:5000```
 export FLASK_APP=api
 export FLASK_DEBUG=1
 export APP_SETTINGS=Local
+export SECRET_KEY=this-really-needs-to-be-changed
 export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template
 export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template-test
 ```

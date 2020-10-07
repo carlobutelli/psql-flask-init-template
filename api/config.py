@@ -5,7 +5,7 @@ class BaseConfig:
     """Base configuration"""
     DEBUG = False
     TESTING = False
-    SECRET_KEY = 'this-really-needs-to-be-changed'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'this-really-needs-to-be-changed')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SWAGGER = {
         "swagger_version": "2.0",
