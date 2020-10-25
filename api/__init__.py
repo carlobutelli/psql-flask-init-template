@@ -13,7 +13,7 @@ from .exceptions import WrongConfiguration
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='templates')
 
     if not os.getenv('APP_SETTINGS'):
         app_settings = f"api.config.DevelopmentConfig"
@@ -26,10 +26,11 @@ def create_app():
 
     # registering blueprints
     from .admin.views import admin as admin_bp
+    from .auth.views import auth as auth_bp
+    from .home.views import home as home_bp
     app.register_blueprint(admin_bp)
-
-    # shell context for flask cli
-    app.shell_context_processor({"app": app})
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(home_bp)
 
     # log handler
     log_level = logging.INFO if not app.config.get("DEBUG") else logging.DEBUG

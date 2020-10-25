@@ -1,7 +1,5 @@
 from flasgger import swag_from
-from flask import Blueprint, jsonify, g
-
-from flask import current_app as app
+from flask import Blueprint, jsonify, g, current_app as app
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
 

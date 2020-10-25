@@ -1,2 +1,2 @@
-# requirements' file for Heroku deployment of Flask App
+# required to perform Heroku deployment
 -r requirements/dev.txt
