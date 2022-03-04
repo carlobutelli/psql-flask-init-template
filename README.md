@@ -2,23 +2,7 @@
 ---------------------
 This is a simple init template base to start building services with Python Flask.
 
----
-
-### Run the API
----------------
-Start both the services (DB & API) with Docker
-```bash
-docker-compose up -d
-```
-and API will be available at ```localhost:8080```
-
-To run the API locally
-```
-virtualenv -p python3 venv && . venv/bin/activate
-pip3 install -r requirements/dev.txt
-flask run -p 8080
-```
-then the API will be available at ```localhost:5000```
+N.B. Requires Docker to be installed.
 
 ---
 
@@ -29,9 +13,31 @@ export FLASK_APP=api
 export FLASK_DEBUG=1
 export APP_SETTINGS=Local
 export SECRET_KEY=this-really-needs-to-be-changed
-export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template
+export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@localhost:5432/init-template
 export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template-test
 ```
+
+---
+
+### Run the API
+---------------
+## In Docker containers
+Start both the services (DB & API) with following commands
+```bash
+docker-compose build
+docker-compose up -d
+```
+API will be available at ```localhost:8080/swagger```
+
+## Locally
+To run the API (DB is in the container)
+```bash
+docker-compose up -d postgres
+virtualenv -p python3 venv && . venv/bin/activate
+pip3 install -r requirements/dev.txt
+flask run -p 8080
+```
+then the API will be available at ```localhost:8080/swagger```
 
 ---
 
