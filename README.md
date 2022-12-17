@@ -37,7 +37,7 @@ virtualenv -p python3 venv && . venv/bin/activate
 pip3 install -r requirements/dev.txt
 flask run -p 8080
 ```
-then the API will be available at ```localhost:8080/swagger```
+then the API will be available at ```localhost:8080```
 N.B. change the hostname ```postgres``` with ```localhost``` in both ENVs DATABASE_URL and DATABASE_URL_TEST
 ---
 

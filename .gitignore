@@ -46,6 +46,7 @@ migrations/
 *.db
 
 venv/
+.venv/
 
 test.db
 
