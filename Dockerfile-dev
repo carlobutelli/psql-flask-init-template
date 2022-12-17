@@ -1,4 +1,4 @@
-FROM python:3.7-alpine3.8
+FROM python:3.9.16-alpine3.16
 MAINTAINER Carlo Butelli <dev.butelli@gmail.com>
 
 ENV INSTALL_PATH /code
@@ -7,9 +7,9 @@ RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
 COPY requirements /code/requirements
-RUN apk add py-configobj libusb py-pip python-dev gcc linux-headers
+RUN apk add py-configobj libusb py-pip python3-dev gcc linux-headers
 RUN apk add --no-cache --virtual .build-deps zlib-dev jpeg-dev \
-  build-base postgresql-dev libffi-dev python3-dev \
+  build-base postgresql-dev libffi-dev \
     && pip3 install -r requirements/dev.txt \
     && find /usr/local \
         \( -type d -a -name test -o -name tests \) \

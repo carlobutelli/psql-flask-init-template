@@ -2,7 +2,7 @@
 ---------------------
 This is a simple init template base to start building services with Python Flask.
 
-N.B. Requires Docker to be installed.
+N.B. Requires Docker to be installed and Python3.
 
 ---
 
@@ -22,8 +22,11 @@ export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@localhost:5432/tyc
 ### Run the API
 ---------------
 ## In Docker containers
+- Python 3.9.16 and Postgres 13 images have been used
+ 
 Start both the services (DB & API) with following commands
 ```bash
+chmod +x create-test-db.sh
 docker-compose build
 docker-compose up -d
 ```
