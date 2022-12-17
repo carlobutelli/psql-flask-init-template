@@ -13,8 +13,8 @@ export FLASK_APP=api
 export FLASK_DEBUG=1
 export APP_SETTINGS=Local
 export SECRET_KEY=this-really-needs-to-be-changed
-export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template
-export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/init-template-test
+export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/tyche
+export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/tyche-test
 ```
 
 ---
@@ -30,11 +30,16 @@ docker-compose up -d
 API will be available at ```localhost:8080/swagger```
 
 ## Locally
-To run the API (DB is in the container)
+Start the DB in  container
 ```bash
 docker-compose up -d postgres
-virtualenv -p python3 venv && . venv/bin/activate
-pip3 install -r requirements/dev.txt
+```
+
+and the API (DB is in the container)
+```bash
+docker-compose up -d postgres
+python -m venv venv && . venv/bin/activate
+pip install -r requirements/dev.txt
 flask run -p 8080
 ```
 then the API will be available at ```localhost:8080```
@@ -43,8 +48,7 @@ N.B. change the hostname ```postgres``` with ```localhost``` in both ENVs DATABA
 
 ### Documentation
 -----------------
-The Swagger documentation is available @[flask-init-template.herokuapp.com](https://flask-init-template.herokuapp.com/swagger)
-or alternatively, at the development stage, @```localhost:<port>/swagger```
+The Swagger documentation is available @```localhost:<port>/swagger```
 
 ---
 
