@@ -13,8 +13,8 @@ export FLASK_APP=api
 export FLASK_DEBUG=1
 export APP_SETTINGS=Local
 export SECRET_KEY=this-really-needs-to-be-changed
-export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/tyche
-export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@postgres:5432/tyche-test
+export DATABASE_URL=postgresql+psycopg2://tyche:d0nt4get@localhost:5432/tyche
+export DATABASE_TEST_URL=postgresql+psycopg2://tyche:d0nt4get@localhost:5432/tyche-test
 ```
 
 ---
