@@ -21,12 +21,12 @@ def create_app():
         app_settings = f"api.config.{os.getenv('APP_SETTINGS')}Config"
     app.config.from_object(app_settings)
 
-    Core(app)
+    # Core(app)
     CORS(app)
 
     # registering blueprints
-    from .admin.views import admin as admin_bp
-    app.register_blueprint(admin_bp)
+    from .health.views import health as health_bp
+    app.register_blueprint(health_bp)
 
     # shell context for flask cli
     app.shell_context_processor({"app": app})

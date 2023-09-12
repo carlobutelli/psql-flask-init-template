@@ -17,7 +17,7 @@
   ],
   "tags": [
     {
-      "name": "Admin",
+      "name": "Health",
       "description": "App readiness and health checks"
     }
   ],

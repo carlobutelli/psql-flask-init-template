@@ -22,7 +22,7 @@ class LocalConfig(BaseConfig):
     """Development configuration"""
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://tyche:d0nt4get@localhost:5432/tyche')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',  'sqlite:///test.db')
 
 
 class TestingConfig(BaseConfig):
@@ -36,7 +36,7 @@ class DevelopmentConfig(BaseConfig):
     DEVELOPMENT = True
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://tyche:d0nt4get@localhost:5432/tyche')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',  'sqlite:///test.db')
 
 
 class ProductionConfig(BaseConfig):
